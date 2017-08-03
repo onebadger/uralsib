@@ -27,8 +27,23 @@ function updateResults() {
         client.birthDate === $("#birth_date").val() ) {
         // show modal window asking if the user wants to accept the bank offer 
         $modalWindow.show("fast");
+        
+        $('#yes_button, #no_button').click(function () {
+          if (this.id == 'yes_button') {
+          alert('Submit 1 clicked');
+        }
+        else if (this.id == 'no_button') {
+          alert('Submit 2 clicked');
+    }
+});
+      
+      
+      
+      } else {
+        
       }
   }
+  
   
   
   
@@ -49,16 +64,7 @@ function updateResults() {
 
 }
 
-$("#first_name").on("input", function () {
-  updateResults();
-});
-$("#last_name").on("input", function () {
-  updateResults();
-});
-$("#middle_name").on("input", function () {
-  updateResults();
-});
-$("#birth_date").on("input", function () {
+$("#first_name, #last_name, #middle_name, #birth_date").on("input", function () {
   updateResults();
 });
 
