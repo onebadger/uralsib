@@ -1,9 +1,14 @@
 // change and count calc. conditions according to the users input
 
 
-var $firstName = $("#first_name");
-var $secondName = $("#second_name");
-var $middleName = $("#middle_name");
+var $firstName = $("#first_name").val();
+var $lastName = $("#last_name").val();
+var $middleName = $("#middle_name").val();
+var $birthDate = $("#birth_date").val();
+var clientFirstName;
+var clientLastName;
+var clientMiddleName;
+var clientBirthDate;
 
 var $modalWindow = $('#modal');
 
@@ -11,9 +16,31 @@ var amount = 0;
 var duration = 0;
 var insurance = false;
 
+var personalOfferAvailable = false;
+var personalOfferAccepted = false;
+
+
+function updateResults() {
+
 // test if the user input data matches clients list elements
+
+for ( var i = 0; i < clientsList.length; i += 1 ) {
+  clientFirstName = clientsList[i];
+  clientLastName = clientsList[i];
+  clientMiddleName = clientsList[i];
+  clientBirthDate = clientsList[i];
+  console.log('hi');
   // if the user data matches
-    // show modal window asking if the user wants to accept the bank offer
+    if ( clientFirstName.firstName ===  $firstName.toUpperCase() ) {
+    // show modal window asking if the user wants to accept the bank offer 
+      $modalWindow.show();
+    }
+} 
+  
+  
+  
+
+
       // if user accept the offer
         // apply conditions to the calculator
         // hide insurance field below
@@ -27,7 +54,7 @@ var insurance = false;
     // let user change the sum and the period of credit according to conditions applied
     // change credit percent if insurance on/off
 
-
+}
 
 // personal bank offer
 // credit sum 900000 rub.

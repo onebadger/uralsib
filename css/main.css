@@ -35,7 +35,7 @@ form {
   margin: 20px 0;
 }
 
-.form-set-lable {
+.form-set-label {
   align-self: center;
   flex-basis: 40%;
 }
@@ -84,6 +84,11 @@ select {
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
   border-radius: 5px;
+
+}
+
+input[type="number"] {
+  text-align: right; 
 }
 
 input[type="range"] {
