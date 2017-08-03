@@ -30,10 +30,11 @@ function updateResults() {
         
         $('#yes_button, #no_button').click(function () {
           if (this.id == 'yes_button') {
-          alert('Submit 1 clicked');
+            $modalWindow.hide("fast");
+            $("#credit_sum").val('900000');
         }
         else if (this.id == 'no_button') {
-          alert('Submit 2 clicked');
+          $modalWindow.hide("fast");
     }
 });
       
@@ -87,8 +88,21 @@ $("#first_name, #last_name, #middle_name, #birth_date").on("input", function () 
 
 
 
+$('#credit_sum_range').on("change mousemove", function() {
+    $('#credit_sum').val($('#credit_sum_range').val());
+});
 
+$('#credit_sum').on("change input", function() {
+    $('#credit_sum_range').val($('#credit_sum').val());
+});
 
+$('#credit_period_range').on("change mousemove", function() {
+    $('#credit_period').val($('#credit_period_range').val());
+});
+
+$('#credit_period').on("change input", function() {
+    $('#credit_period_range').val($('#credit_period').val());
+});
 
 
 

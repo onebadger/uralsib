@@ -49,8 +49,8 @@
             <label for="credit_sum">Сумма кредита</label>
           </div>
           <div class="form-set-input">
-            <input type="number" id="credit_sum" placeholder="РУБ.">
-            <input type="range">
+            <input type="number" min="35000" max="1500000" step="1000" id="credit_sum" placeholder="РУБ.">
+            <input type="range" min="35000" max="1500000" step="1000" id="credit_sum_range">
           </div>
         </div>
         <div class="form-set">
@@ -58,8 +58,8 @@
             <label for="credit_period">Срок кредита</label>
           </div>
           <div class="form-set-input">
-            <input type="number" id="credit_period" placeholder="мес.">
-            <input type="range">
+            <input type="number" min="12" max="84" step="1" id="credit_period" placeholder="мес.">
+            <input type="range" min="12" max="84" step="1" id="credit_period_range">
           </div>
         </div>
         <div class="form-set">
