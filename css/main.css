@@ -1,0 +1,120 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+
+.wrapper {
+  max-width: 750px;
+  border: 1px solid lightgrey;
+  margin: 30px auto;
+  padding: 40px;
+}
+
+.wrapper h1 {
+  font-weight: 100;
+  font-size: 1.3em;
+  text-align: center;
+  margin: 0px;
+}
+
+form {
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 10px 20px;
+}
+
+.form-set {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.form-set-lable {
+  align-self: center;
+  flex-basis: 40%;
+}
+
+.form-set-input {
+  align-self: center;
+  flex-basis: 60%;
+}
+
+.form-set-mixed {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 60%;
+}
+
+.form-set-mixed div {
+  align-self: center;
+}
+
+.form-set-mixed-element input[type="text"] {
+  width: 60px;
+}
+
+label {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  padding: 12px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  border-radius: 5px;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 15px;
+}
+
+.radio {
+  margin-left: 30px;
+}
+
+.calculator p {
+  margin-top: 30px;
+  font-size: 0.85em;
+  color: grey;  
+}
+
+button {
+  padding: 17px 39px 16px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-top: 40px;
+}
