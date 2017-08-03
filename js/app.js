@@ -1,10 +1,5 @@
 // change and count calc. conditions according to the users input
 
-
-var $firstName = $("#first_name").val();
-var $lastName = $("#last_name").val();
-var $middleName = $("#middle_name").val();
-var $birthDate = $("#birth_date").val();
 var clientFirstName;
 var clientLastName;
 var clientMiddleName;
@@ -22,20 +17,18 @@ var personalOfferAccepted = false;
 
 function updateResults() {
 
-// test if the user input data matches clients list elements
-
-for ( var i = 0; i < clientsList.length; i += 1 ) {
-  clientFirstName = clientsList[i];
-  clientLastName = clientsList[i];
-  clientMiddleName = clientsList[i];
-  clientBirthDate = clientsList[i];
-  console.log('hi');
-  // if the user data matches
-    if ( clientFirstName.firstName ===  $firstName.toUpperCase() ) {
-    // show modal window asking if the user wants to accept the bank offer 
-      $modalWindow.show();
-    }
-} 
+  // test if the user input data matches clients list elements
+  for ( var i = 0; i < clientsList.length; i += 1 ) {
+    client = clientsList[i];
+    // if the user data matches
+    if ( client.firstName ===  $("#first_name").val().toUpperCase() && 
+        client.lastName === $("#last_name").val().toUpperCase() && 
+        client.middleName === $("#middle_name").val().toUpperCase() && 
+        client.birthDate === $("#birth_date").val() ) {
+        // show modal window asking if the user wants to accept the bank offer 
+        $modalWindow.show("fast");
+      }
+  }
   
   
   
@@ -55,6 +48,19 @@ for ( var i = 0; i < clientsList.length; i += 1 ) {
     // change credit percent if insurance on/off
 
 }
+
+$("#first_name").on("input", function () {
+  updateResults();
+});
+$("#last_name").on("input", function () {
+  updateResults();
+});
+$("#middle_name").on("input", function () {
+  updateResults();
+});
+$("#birth_date").on("input", function () {
+  updateResults();
+});
 
 // personal bank offer
 // credit sum 900000 rub.
