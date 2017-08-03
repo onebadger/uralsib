@@ -1,5 +1,16 @@
 // change and count calc. conditions according to the users input
 
+
+var $firstName = $("#first_name");
+var $secondName = $("#second_name");
+var $middleName = $("#middle_name");
+
+var $modalWindow = $('#modal');
+
+var amount = 0;
+var duration = 0;
+var insurance = false;
+
 // test if the user input data matches clients list elements
   // if the user data matches
     // show modal window asking if the user wants to accept the bank offer
@@ -11,7 +22,7 @@
         // use calculator without conditions
         // let user change the sum and the period of credit according to conditions applied
         // change credit percent if insurance on/off
-  // if the user data doesn't match (or there is no data)
+  // if the user data doesn't match
     // use calculator without conditions
     // let user change the sum and the period of credit according to conditions applied
     // change credit percent if insurance on/off
@@ -33,6 +44,8 @@
 // credit period range 12 - 60 mo.
 // credit percent 19% yr. with insurance
 // credit percent 22% yr. without insurance
+
+
 
 
 
