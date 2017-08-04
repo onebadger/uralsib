@@ -79,11 +79,7 @@ function updateResults() {
           // show insurance field below
           $("#insurance").show();
           // change credit percent if insurance on/off
-          if ( $('input:radio[id="insurance_on"]').attr('checked', true) ) {
-            $("#credit_percent").val(19);
-          } else if ( $('input:radio[id="insurance_off"]').attr('checked', true) ) {
-            $("#credit_percent").val(22);
-          }
+          
         }
       });
       
@@ -106,11 +102,7 @@ function updateResults() {
       // show insurance field below
         $("#insurance").show();
       // change credit percent if insurance on/off
-      if ( $('input:radio[id="insurance_on"]').attr('checked', true) ) {
-        $("#credit_percent").val(19);
-      } else if ( $('input:radio[id="insurance_off"]').attr('checked', true) ) {
-        $("#credit_percent").val(22);
-      }
+      
     
     // if there is no user data
     } else if ( !$("#first_name").val() || !$("#last_name").val() || !$("#middle_name").val() || !$("#birth_date").val() ) { 
@@ -138,22 +130,6 @@ $("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range, #insura
 $("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range, #insurance_on, #insurance_off").on("change", function () {
   updateResults();
 });
-
-// personal bank offer
-// credit sum 900000 rub.
-// credit sum range 35000 - 1500000 rub.
-// credit period 36 mo.
-// credit period range 12 - 84 mo.
-// credit percent 15% yr.
-
-
-// common bank offer
-// credit sum 900000 rub.
-// credit sum range 50000 - 1000000 rub.
-// credit period 36 mo.
-// credit period range 12 - 60 mo.
-// credit percent 19% yr. with insurance
-// credit percent 22% yr. without insurance
 
 
 
