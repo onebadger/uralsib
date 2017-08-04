@@ -27,16 +27,42 @@ function updateResults() {
         client.birthDate === $("#birth_date").val() ) {
         // show modal window asking if the user wants to accept the bank offer 
         $modalWindow.show("fast");
-        
+      
+        // if user accept the offer      
         $('#yes_button, #no_button').click(function () {
           if (this.id == 'yes_button') {
+            // hide modal
             $modalWindow.hide("fast");
+            // apply conditions to the calculator
+            // let user change the sum and the period of credit according to conditions applied 
+            $("#credit_sum, #credit_sum_range").attr('min', 35000);
+            $("#credit_sum, #credit_sum_range").attr('max', 1500000);
             $("#credit_sum").val('900000');
-        }
-        else if (this.id == 'no_button') {
-          $modalWindow.hide("fast");
-    }
-});
+            $('#credit_sum_range').val('900000');
+            $("#credit_period, #credit_period_range").attr('min', 12);
+            $("#credit_period, #credit_period_range").attr('max', 84);
+            $("#credit_period").val('24');
+            $('#credit_period_range').val('24');
+            // hide insurance field below
+            $("#insurance").hide();
+            
+          // if user doesn't accept the offer    
+          } else if (this.id == 'no_button') {
+            // hide modal
+            $modalWindow.hide("fast");
+            // use calculator with common conditions
+            // let user change the sum and the period of credit according to conditions applied
+            $("#credit_sum, #credit_sum_range").attr('min', 50000);
+            $("#credit_sum, #credit_sum_range").attr('max', 1000000);
+            $("#credit_sum").val('900000');
+            $('#credit_sum_range').val('900000');
+            $("#credit_period, #credit_period_range").attr('min', 12);
+            $("#credit_period, #credit_period_range").attr('max', 60);
+            $("#credit_period").val('24');
+            $('#credit_period_range').val('24');
+            // change credit percent if insurance on/off
+          }
+        });
       
       
       
@@ -50,14 +76,10 @@ function updateResults() {
   
 
 
-      // if user accept the offer
-        // apply conditions to the calculator
-        // hide insurance field below
-        // let user change the sum and the period of credit according to conditions applied
-      // if user doesn't accept the offer
-        // use calculator without conditions
-        // let user change the sum and the period of credit according to conditions applied
-        // change credit percent if insurance on/off
+
+      
+
+        
   // if the user data doesn't match
     // use calculator without conditions
     // let user change the sum and the period of credit according to conditions applied
