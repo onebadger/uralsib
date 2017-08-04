@@ -14,6 +14,9 @@ var insurance = false;
 var personalOfferAvailable = false;
 var personalOfferAccepted = false;
 
+function calculatePayment () {
+  $("#credit_payment").val( $("#credit_sum").val() * ( 1 + $("#credit_percent").val() / 100 ) /  $("#credit_period").val() );
+}
 
 function updateResults() {
 
@@ -48,6 +51,8 @@ function updateResults() {
           $('#credit_period_range').val(24);
           $("#credit_sum, #credit_sum_range").prop('disabled', false);
           $("#credit_period, #credit_period_range").prop('disabled', false);
+          $("#credit_percent").val(15);
+          calculatePayment();
           // hide insurance field below
           $("#insurance").hide();
             
@@ -69,10 +74,13 @@ function updateResults() {
           $('#credit_period_range').val(24);
           $("#credit_sum, #credit_sum_range").prop('disabled', false);
           $("#credit_period, #credit_period_range").prop('disabled', false);
+          $("#credit_percent").val(19);
+          calculatePayment();
           // change credit percent if insurance on/off
         }
       });
       
+    // if the user data doesn't match 
     } else if ( $("#first_name").val() && $("#last_name").val() && $("#middle_name").val() && $("#birth_date").val() ) {
       // use calculator with common conditions
       // let user change the sum and the period of credit according to conditions applied
@@ -86,8 +94,11 @@ function updateResults() {
       $("#credit_period").val(24);
       $('#credit_period_range').val(24);
       $("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range").prop('disabled', false);
+      $("#credit_percent").val(19);
+      calculatePayment();
       // change credit percent if insurance on/off
     
+    // if there is no user data
     } else if ( !$("#first_name").val() || !$("#last_name").val() || !$("#middle_name").val() || !$("#birth_date").val() ) { 
       // block form if user delete data
       $("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range").prop('disabled', true);
@@ -95,13 +106,10 @@ function updateResults() {
       $('#credit_period_range').val(0);
       $('#credit_sum').val("");
       $('#credit_period').val("");
+      $("#credit_percent").val("")
     }
   }
-        
-  // if the user data doesn't match
-    // use calculator without conditions
-    // let user change the sum and the period of credit according to conditions applied
-    // change credit percent if insurance on/off
+      
 
 }
 
@@ -109,9 +117,9 @@ $("#first_name, #last_name, #middle_name, #birth_date").on("input", function () 
   updateResults();
 });
 
-//$("input").on("change", function () {
-//  updateResults();
-//});
+$("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range").on("change", function () {
+  calculatePayment();
+});
 
 // personal bank offer
 // credit sum 900000 rub.
