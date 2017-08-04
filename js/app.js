@@ -85,16 +85,16 @@ function updateResults() {
       $("#credit_period, #credit_period_range").attr('step', 1);
       $("#credit_period").val(24);
       $('#credit_period_range').val(24);
-      $("#credit_sum, #credit_sum_range").prop('disabled', false);
-      $("#credit_period, #credit_period_range").prop('disabled', false);
+      $("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range").prop('disabled', false);
       // change credit percent if insurance on/off
     
     } else if ( !$("#first_name").val() || !$("#last_name").val() || !$("#middle_name").val() || !$("#birth_date").val() ) { 
       // block form if user delete data
-      $("#credit_sum, #credit_sum_range").prop('min', false);
-      $("#credit_period, #credit_period_range").prop('min', false);
-      $("#credit_sum, #credit_sum_range").prop('disabled', true);
-      $("#credit_period, #credit_period_range").prop('disabled', true);
+      $("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range").prop('disabled', true);
+      $('#credit_sum_range').val(0);
+      $('#credit_period_range').val(0);
+      $('#credit_sum').val("");
+      $('#credit_period').val("");
     }
   }
         
