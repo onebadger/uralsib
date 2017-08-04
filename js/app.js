@@ -112,7 +112,7 @@ function updateResults() {
       $('#credit_period_range').val(0);
       $('#credit_sum').val("");
       $('#credit_period').val("");
-      $("#credit_percent").val("")
+      $("#credit_percent").val("");
     }
   }
       
