@@ -20,65 +20,83 @@ function updateResults() {
   // test if the user input data matches clients list elements
   for ( var i = 0; i < clientsList.length; i += 1 ) {
     client = clientsList[i];
+    
     // if the user data matches
     if ( client.firstName ===  $("#first_name").val().toUpperCase() && 
-        client.lastName === $("#last_name").val().toUpperCase() && 
-        client.middleName === $("#middle_name").val().toUpperCase() && 
-        client.birthDate === $("#birth_date").val() ) {
-        // show modal window asking if the user wants to accept the bank offer 
-        $modalWindow.show("fast");
+      client.lastName === $("#last_name").val().toUpperCase() && 
+      client.middleName === $("#middle_name").val().toUpperCase() && 
+      client.birthDate === $("#birth_date").val() ) {
+      // show modal window asking if the user wants to accept the bank offer 
+      $modalWindow.show("fast");
       
-        // if user accept the offer      
-        $('#yes_button, #no_button').click(function () {
-          if (this.id == 'yes_button') {
-            // hide modal
-            $modalWindow.hide("fast");
-            // apply conditions to the calculator
-            // let user change the sum and the period of credit according to conditions applied 
-            $("#credit_sum, #credit_sum_range").attr('min', 35000);
-            $("#credit_sum, #credit_sum_range").attr('max', 1500000);
-            $("#credit_sum").val('900000');
-            $('#credit_sum_range').val('900000');
-            $("#credit_period, #credit_period_range").attr('min', 12);
-            $("#credit_period, #credit_period_range").attr('max', 84);
-            $("#credit_period").val('24');
-            $('#credit_period_range').val('24');
-            // hide insurance field below
-            $("#insurance").hide();
+      // if user accept the offer
+      $('#yes_button, #no_button').click(function () {
+        if (this.id == 'yes_button') {
+              
+          // hide modal
+          $modalWindow.hide("fast");
+          // apply conditions to the calculator
+          // let user change the sum and the period of credit according to conditions applied 
+          $("#credit_sum, #credit_sum_range").attr('min', 35000);
+          $("#credit_sum, #credit_sum_range").attr('max', 1500000);
+          $("#credit_sum").val(900000);
+          $('#credit_sum_range').val(900000);
+          $("#credit_period, #credit_period_range").attr('min', 12);
+          $("#credit_period, #credit_period_range").attr('max', 84);
+          $("#credit_period, #credit_period_range").attr('step', 1);
+          $("#credit_period").val(24);
+          $('#credit_period_range').val(24);
+          $("#credit_sum, #credit_sum_range").prop('disabled', false);
+          $("#credit_period, #credit_period_range").prop('disabled', false);
+          // hide insurance field below
+          $("#insurance").hide();
             
-          // if user doesn't accept the offer    
-          } else if (this.id == 'no_button') {
-            // hide modal
-            $modalWindow.hide("fast");
-            // use calculator with common conditions
-            // let user change the sum and the period of credit according to conditions applied
-            $("#credit_sum, #credit_sum_range").attr('min', 50000);
-            $("#credit_sum, #credit_sum_range").attr('max', 1000000);
-            $("#credit_sum").val('900000');
-            $('#credit_sum_range').val('900000');
-            $("#credit_period, #credit_period_range").attr('min', 12);
-            $("#credit_period, #credit_period_range").attr('max', 60);
-            $("#credit_period").val('24');
-            $('#credit_period_range').val('24');
-            // change credit percent if insurance on/off
-          }
-        });
+        // if user doesn't accept the offer    
+        } else if (this.id == 'no_button') {
+          
+          // hide modal
+          $modalWindow.hide("fast");
+          // use calculator with common conditions
+          // let user change the sum and the period of credit according to conditions applied
+          $("#credit_sum, #credit_sum_range").attr('min', 50000);
+          $("#credit_sum, #credit_sum_range").attr('max', 1000000);
+          $("#credit_sum").val(500000);
+          $('#credit_sum_range').val(500000);
+          $("#credit_period, #credit_period_range").attr('min', 12);
+          $("#credit_period, #credit_period_range").attr('max', 60);
+          $("#credit_period, #credit_period_range").attr('step', 1);
+          $("#credit_period").val(24);
+          $('#credit_period_range').val(24);
+          $("#credit_sum, #credit_sum_range").prop('disabled', false);
+          $("#credit_period, #credit_period_range").prop('disabled', false);
+          // change credit percent if insurance on/off
+        }
+      });
       
-      
-      
-      } else {
-        
-      }
+    } else if ( $("#first_name").val() && $("#last_name").val() && $("#middle_name").val() && $("#birth_date").val() ) {
+      // use calculator with common conditions
+      // let user change the sum and the period of credit according to conditions applied
+      $("#credit_sum, #credit_sum_range").attr('min', 50000);
+      $("#credit_sum, #credit_sum_range").attr('max', 1000000);
+      $("#credit_sum").val(500000);
+      $('#credit_sum_range').val(500000);
+      $("#credit_period, #credit_period_range").attr('min', 12);
+      $("#credit_period, #credit_period_range").attr('max', 60);
+      $("#credit_period, #credit_period_range").attr('step', 1);
+      $("#credit_period").val(24);
+      $('#credit_period_range').val(24);
+      $("#credit_sum, #credit_sum_range").prop('disabled', false);
+      $("#credit_period, #credit_period_range").prop('disabled', false);
+      // change credit percent if insurance on/off
+    
+    } else if ( !$("#first_name").val() || !$("#last_name").val() || !$("#middle_name").val() || !$("#birth_date").val() ) { 
+      // block form if user delete data
+      $("#credit_sum, #credit_sum_range").prop('min', false);
+      $("#credit_period, #credit_period_range").prop('min', false);
+      $("#credit_sum, #credit_sum_range").prop('disabled', true);
+      $("#credit_period, #credit_period_range").prop('disabled', true);
+    }
   }
-  
-  
-  
-  
-
-
-
-      
-
         
   // if the user data doesn't match
     // use calculator without conditions
@@ -90,6 +108,10 @@ function updateResults() {
 $("#first_name, #last_name, #middle_name, #birth_date").on("input", function () {
   updateResults();
 });
+
+//$("input").on("change", function () {
+//  updateResults();
+//});
 
 // personal bank offer
 // credit sum 900000 rub.
