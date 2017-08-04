@@ -76,7 +76,14 @@ function updateResults() {
           $("#credit_period, #credit_period_range").prop('disabled', false);
           $("#credit_percent").val(19);
           calculatePayment();
+          // show insurance field below
+          $("#insurance").show();
           // change credit percent if insurance on/off
+          if ( $('input:radio[id="insurance_on"]').attr('checked', true) ) {
+            $("#credit_percent").val(19);
+          } else if ( $('input:radio[id="insurance_off"]').attr('checked', true) ) {
+            $("#credit_percent").val(22);
+          }
         }
       });
       
@@ -96,7 +103,14 @@ function updateResults() {
       $("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range").prop('disabled', false);
       $("#credit_percent").val(19);
       calculatePayment();
+      // show insurance field below
+        $("#insurance").show();
       // change credit percent if insurance on/off
+      if ( $('input:radio[id="insurance_on"]').attr('checked', true) ) {
+        $("#credit_percent").val(19);
+      } else if ( $('input:radio[id="insurance_off"]').attr('checked', true) ) {
+        $("#credit_percent").val(22);
+      }
     
     // if there is no user data
     } else if ( !$("#first_name").val() || !$("#last_name").val() || !$("#middle_name").val() || !$("#birth_date").val() ) { 
@@ -117,8 +131,12 @@ $("#first_name, #last_name, #middle_name, #birth_date").on("input", function () 
   updateResults();
 });
 
-$("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range").on("change", function () {
+$("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range, #insurance_on, #insurance_off").on("change", function () {
   calculatePayment();
+});
+
+$("#credit_sum, #credit_sum_range, #credit_period, #credit_period_range, #insurance_on, #insurance_off").on("change", function () {
+  updateResults();
 });
 
 // personal bank offer
