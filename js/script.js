@@ -16,6 +16,9 @@ var $percentHolder = $('#credit_percent');
 var $paymentHolder = $('#credit_payment');
 var $insuranceHolder = $('#insurance');
 
+//var $insuranceButtonOff = $('.insurance_off');
+//var $insuranceButtonOn = $('.insurance_on');
+
 var amount = 0;
 var amountRange = 0;
 var duration = 0;
@@ -26,8 +29,8 @@ var monthlyPayment = 0;
 var $modalWindow = $('#modal');
 var $offerAccept = $('#yes_button');
 var $offerDecline = $('#no_button');
-var $insuranceAccept = $('insurance_on');
-var $insuranceDecline = $('insurance_off');
+var $insuranceAccept = $('#insurance_on');
+var $insuranceDecline = $('#insurance_off');
 
 var personDetailsEntered = false;
 var isKnownClient = false;
@@ -42,8 +45,6 @@ function calculatePayment () {
   
   if (!isKnownClient) {
     
-   
-    
     $insuranceHolder.show();
     percentage = unknownClientPercent;
     
@@ -51,25 +52,24 @@ function calculatePayment () {
       percentage += insurancePercent;
     }
     
-  } else {
-    
-    
+  } else if (isKnownClient && personalOfferAccepted) {
     
     $insuranceHolder.hide();
     percentage = knownClientPercent;
     $percentHolder.val(percentage);
     
+  } else {
+    
+    $insuranceHolder.hide();
+    percentage = unknownClientPercent;
+    $percentHolder.val(percentage);
+    
   }
   
-  
-  
   $percentHolder.val(percentage);
-  
-  amount = $amountHolder.val();
-  duration = $durationHolder.val()
-  
   monthlyPayment = amount * (1 + percentage / 100) / duration;
-  
+  amount = $amountHolder.val();
+  duration = $durationHolder.val();
   $paymentHolder.val(monthlyPayment);
 }
 
@@ -117,7 +117,8 @@ $firstName
       $amountRangeHolder.attr('disabled', true);
       $durationHolder.attr('disabled', true);
       $durationRangeHolder.attr('disabled', true);
-      $insuranceHolder.attr('disabled', true);
+      $insuranceAccept.attr('disabled', true);
+      $insuranceDecline.attr('disabled', true);
 
       $amountHolder.val('');
       $amountRangeHolder.val(0);
@@ -133,7 +134,8 @@ $firstName
     $amountRangeHolder.attr('disabled', false);
     $durationHolder.attr('disabled', false);
     $durationRangeHolder.attr('disabled', false);
-    $insuranceHolder.attr('disabled', false);
+    $insuranceAccept.attr('disabled', false);
+    $insuranceDecline.attr('disabled', false);
   
     checkKnownClient();
   
@@ -153,23 +155,28 @@ $offerAccept.click(function() {
   $modalWindow.hide();
   $insuranceHolder.hide();
   personalOfferAccepted = true;
+  percentage = knownClientPercent;
   calculatePayment();
       
 });
 
 $offerDecline.click(function() {
   $modalWindow.hide();
+  $insuranceHolder.show();
   personalOfferAccepted = false;
+  percentage = unknownClientPercent;
   calculatePayment();
 });
 
 $insuranceAccept.click(function() {
   insuranceAccepted = true;
+  calculatePayment();
 });
                        
                        
 $insuranceDecline.click(function() {
   insuranceAccepted = false;
+  calculatePayment();
 });                 
 
 
