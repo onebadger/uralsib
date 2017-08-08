@@ -46,20 +46,20 @@
         </div>
         <div class="form-set">
           <div class="form-set-label">
-            <label for="credit_sum">Сумма кредита</label>
+            <label for="amount">Сумма кредита</label>
           </div>
           <div class="form-set-input">
-            <input type="number" disabled step="1000" id="credit_sum" placeholder="РУБ.">
-            <input type="range" disabled step="1000" id="credit_sum_range">
+            <input type="number" disabled step="1000" id="amount" placeholder="РУБ.">
+            <input type="range" disabled step="1000" id="amount_range">
           </div>
         </div>
         <div class="form-set">
           <div class="form-set-label">
-            <label for="credit_period">Срок кредита</label>
+            <label for="duration">Срок кредита</label>
           </div>
           <div class="form-set-input">
-            <input type="number" disabled step="1000" id="credit_period" placeholder="мес.">
-            <input type="range" disabled step="1000" id="credit_period_range">
+            <input type="number" disabled step="1" id="duration" placeholder="мес.">
+            <input type="range" disabled step="1" id="duration_range">
           </div>
         </div>
         <div class="form-set">
@@ -82,14 +82,14 @@
           <div class="form-set-label">
             <label>Страхование</label>
           </div>
-          <div class="form-set-input">
-            <input type="radio" id="insurance_on" value="yes" name="user_insurance"><label>Да</label>
-            <input type="radio" id="insurance_off" value="no" name="user_insurance" class="radio"><label>Нет</label>
+          <div id="insurance" class="form-set-input">
+            <input type="radio" disabled id="insurance_on" class="insurance" value="yes" name="user_insurance"><label>Да</label>
+            <input type="radio" disabled id="insurance_off" checked class="insurance" value="no" name="user_insurance" class="radio"><label>Нет</label>
           </div>
         </div>
         
         <p>Все расчеты являются предварительными, для получения более точной информации вы можете обратиться в любое отделение банка</p>
-        <button type="submit">Рассчитать</button>
+        <button type="submit" id="submit">Рассчитать</button>
       </form>
 
     </div> <!-- /.wrapper -->
@@ -102,12 +102,12 @@
       </div>
       <div class="modal-buttons">
         <button type="submit" id="yes_button">Принять предложение и отправить заявку</button><br>
-        <button type="submit" id="no_button" class="refuse">Отказаться от предложения</button>
+        <button type="submit" id="no_button">Отказаться от предложения</button>
       </div>
     </div>
   
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="js/clients.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
