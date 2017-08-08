@@ -16,9 +16,6 @@ var $percentHolder = $('#credit_percent');
 var $paymentHolder = $('#credit_payment');
 var $insuranceHolder = $('#insurance');
 
-//var $insuranceButtonOff = $('.insurance_off');
-//var $insuranceButtonOn = $('.insurance_on');
-
 var amount = 0;
 var amountRange = 0;
 var duration = 0;
