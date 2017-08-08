@@ -38,22 +38,11 @@ var knownClientPercent = 15;
 var unknownClientPercent = 19;
 var insurancePercent = 3;
 
-// prevent submit event
-$('#submit').click(function(event) {
-    event.preventDefault();
-});
-
 function calculatePayment () {
-  
   
   if (!isKnownClient) {
     
-    $amountHolder.add($amountRangeHolder).attr('min', 50000);
-    $amountHolder.add($amountRangeHolder).attr('max', 1000000);
-    $amountHolder.add($amountRangeHolder).val(500000);
-    $durationHolder.add($durationRangeHolder).attr('min', 12);
-    $durationHolder.add($durationRangeHolder).attr('max', 60);
-    $durationHolder.add($durationRangeHolder).val(24);
+   
     
     $insuranceHolder.show();
     percentage = unknownClientPercent;
@@ -64,13 +53,9 @@ function calculatePayment () {
     
   } else {
     
-    $amountHolder.add($amountRangeHolder).attr('min', 35000);
-    $amountHolder.add($amountRangeHolder).attr('max', 1500000);
-    $amountHolder.add($amountRangeHolder).val(900000);
-    $durationHolder.add($durationRangeHolder).attr('min', 12);
-    $durationHolder.add($durationRangeHolder).attr('max', 84);
-    $durationHolder.add($durationRangeHolder).val(36);
     
+    
+    $insuranceHolder.hide();
     percentage = knownClientPercent;
     $percentHolder.val(percentage);
     
@@ -86,31 +71,33 @@ function calculatePayment () {
   monthlyPayment = amount * (1 + percentage / 100) / duration;
   
   $paymentHolder.val(monthlyPayment);
-  
 }
-
 
 function checkKnownClient() {
   
-  for ( var i = 0; i < clientsList.length; i += 1 ) {
-    client = clientsList[i];
+  for ( var i = 0; i < clientsList.length; i++ ) {
     
-    if ( client.firstName === firstName.toUpperCase() && 
-      client.lastName === lastName.toUpperCase() && 
-      client.middleName === middleName.toUpperCase() && 
-      client.birthDate === birthDate ) {
-      
+    var client = clientsList[i];
+    if ( client.firstName === firstName.toUpperCase() && client.lastName === lastName.toUpperCase() && client.middleName === middleName.toUpperCase() && client.birthDate === birthDate ) {
       isKnownClient = true;
-      
+      $amountHolder.add($amountRangeHolder).attr('min', 35000);
+      $amountHolder.add($amountRangeHolder).attr('max', 1500000);
+      $amountHolder.add($amountRangeHolder).val(900000);
+      $durationHolder.add($durationRangeHolder).attr('min', 12);
+      $durationHolder.add($durationRangeHolder).attr('max', 84);
+      $durationHolder.add($durationRangeHolder).val(36);
+      return
     } else {
-      
       isKnownClient = false;
-      
+      $amountHolder.add($amountRangeHolder).attr('min', 50000);
+      $amountHolder.add($amountRangeHolder).attr('max', 1000000);
+      $amountHolder.add($amountRangeHolder).val(500000);
+      $durationHolder.add($durationRangeHolder).attr('min', 12);
+      $durationHolder.add($durationRangeHolder).attr('max', 60);
+      $durationHolder.add($durationRangeHolder).val(24);
     }
-  }
+  };
 }
-
-
 
 $firstName
   .add($lastName)
@@ -161,7 +148,7 @@ $firstName
     }
     
 });
-
+  
 $offerAccept.click(function() {
   $modalWindow.hide();
   $insuranceHolder.hide();
@@ -176,7 +163,6 @@ $offerDecline.click(function() {
   calculatePayment();
 });
 
-
 $insuranceAccept.click(function() {
   insuranceAccepted = true;
 });
@@ -189,22 +175,20 @@ $insuranceDecline.click(function() {
 
 $amountRangeHolder.on("change mousemove", function() {
   $amountHolder.val($amountRangeHolder.val());
+  calculatePayment ();
 });
 
 $amountHolder.on("change input", function() {
   $amountRangeHolder.val($amountHolder.val());
+  calculatePayment ();
 });
 
 $durationRangeHolder.on("change mousemove", function() {
   $durationHolder.val($durationRangeHolder.val());
+  calculatePayment ();
 });
 
 $durationHolder.on("change input", function() {
   $durationRangeHolder.val($durationHolder.val());
+  calculatePayment ();
 });
-
-
-
-
-
-
