@@ -130,7 +130,8 @@ button {
   background: rgba(0,0,0, .9);
   width: 100%;
   height: 100%;
-  position: absolute; 
+  position: fixed; 
+  overflow: auto;
   top: 0;
   left: 0;
   display: none;
@@ -141,6 +142,10 @@ button {
   max-width: 60%;
   color: white;
   margin: 15% auto 5%;
+}
+
+.modal-buttons {
+  padding: 0 0 100px;
 }
 
 .modal-text h1 {
@@ -157,4 +162,24 @@ button {
   background-color: lightgrey;
   border: 1px solid grey;
   color: black
+}
+
+.form-set-with_units {
+  position: relative;
+}
+
+.form-set-with_units input[type=number] {
+  padding-right: 50px;
+}
+
+.form-set-with_units .units {
+  display: block;
+  position: absolute;
+  top: 0;
+  line-height: 42px;
+  right: 10px;
+  width: 40px;
+  text-align: left;
+  cursor: text;
+  color: #8a97a0;
 }
