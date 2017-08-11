@@ -3,18 +3,18 @@ var clientsList = [
     firstName : 'ИВАН',
     lastName : 'ИВАНОВ',
     middleName : 'ИВАНОВИЧ',
-    birthDate : '1971-01-01'
+    birthDate : '01/01/1971'
   },
   {
     firstName : 'ПЕТР',
     lastName : 'ПЕТРОВ',
     middleName : 'ПЕТРОВИЧ',
-    birthDate : '1972-02-02'
+    birthDate : '02/02/2972'
   },
   {
     firstName : 'НИКОЛАЙ',
     lastName : 'НИКОЛАЕВ',
     middleName : 'НИКОЛАЕВИЧ',
-    birthDate : '1973-03-03'
+    birthDate : '03/03/1973'
   }
 ]

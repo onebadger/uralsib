@@ -38,6 +38,14 @@ var knownClientPercent = 15;
 var unknownClientPercent = 19;
 var insurancePercent = 3;
 
+$('#submit').on('click', function (event) {
+  event.preventDefault();
+});
+
+jQuery(function($){
+   $("#birth_date").mask("99/99/9999",{placeholder:"ff/ff/yyyy"});
+});
+
 function calculatePayment () {
   if (personalOfferAccepted) {
     $insuranceHolder.hide();
