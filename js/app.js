@@ -43,7 +43,7 @@ $('#submit').on('click', function (event) {
 });
 
 jQuery(function($){
-   $("#birth_date").mask("99/99/9999",{placeholder:"ff/ff/yyyy"});
+   $("#birth_date").mask("99/99/9999",{placeholder:"ДД/ММ/ГГГГ"});
 });
 
 function calculatePayment () {
