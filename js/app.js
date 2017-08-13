@@ -84,6 +84,26 @@ function checkKnownClient() {
   };
 }
 
+function personalOffer () {
+  $amountHolder.add($amountRangeHolder).attr('min', 35000);
+  $amountHolder.add($amountRangeHolder).attr('max', 1500000);
+  normalizeAmountValue();
+  
+  $durationHolder.add($durationRangeHolder).attr('min', 12);
+  $durationHolder.add($durationRangeHolder).attr('max', 84);
+  normalizeDurationValue();
+}
+
+function commonOffer () {
+  $amountHolder.add($amountRangeHolder).attr('min', 50000);
+  $amountHolder.add($amountRangeHolder).attr('max', 1000000);
+  normalizeAmountValue();
+
+  $durationHolder.add($durationRangeHolder).attr('min', 12);
+  $durationHolder.add($durationRangeHolder).attr('max', 60);
+  normalizeDurationValue();
+}
+
 function normalizeAmountValue() {
   var min = $amountHolder.prop('min')
   var max = $amountHolder.prop('max')
@@ -141,13 +161,7 @@ $firstName
     } else {
       personalOfferAccepted = false;
 
-      $amountHolder.add($amountRangeHolder).attr('min', 50000);
-      $amountHolder.add($amountRangeHolder).attr('max', 1000000);
-      normalizeAmountValue();
-
-      $durationHolder.add($durationRangeHolder).attr('min', 12);
-      $durationHolder.add($durationRangeHolder).attr('max', 60);
-      normalizeDurationValue();
+      commonOffer();
 
       calculatePayment();
     }
@@ -157,13 +171,7 @@ $offerAccept.click(function() {
   $modalWindow.hide();
   personalOfferAccepted = true;
 
-  $amountHolder.add($amountRangeHolder).attr('min', 35000);
-  $amountHolder.add($amountRangeHolder).attr('max', 1500000);
-  normalizeAmountValue();
-  
-  $durationHolder.add($durationRangeHolder).attr('min', 12);
-  $durationHolder.add($durationRangeHolder).attr('max', 84);
-  normalizeDurationValue();
+  personalOffer();
 
   calculatePayment();
 });
@@ -171,6 +179,9 @@ $offerAccept.click(function() {
 $offerDecline.click(function() {
   $modalWindow.hide();
   personalOfferAccepted = false;
+  
+  commonOffer();
+  
   calculatePayment();
 });
 
