@@ -110,18 +110,28 @@ input[type="checkbox"] {
   color: grey;  
 }
 
-button {
+button,
+.submit {
   padding: 17px 39px 16px 39px;
   color: #FFF;
-  background-color: #4bc970;
+  background-color: #86db9f;
   font-size: 18px;
   text-align: center;
   font-style: normal;
   border-radius: 5px;
-  border: 1px solid #3ac162;
+  border: 1px solid #9ae1af;
   border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-top: 40px;
+  cursor: not-allowed;
+}
+
+.submit-active {
+  background-color: #4bc970;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  cursor: pointer;
 }
 
 #modal {
